@@ -21,7 +21,8 @@
     "test": "vitest run",
     "test:watch": "vitest",
     "lint": "eslint .",
-    "typecheck": "tsc --noEmit"
+    "typecheck": "tsc --noEmit",
+    "prepare": "vite build"
   },
   "peerDependencies": {
     "dexie": ">=4.0.0",
