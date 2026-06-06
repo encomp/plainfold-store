@@ -10,3 +10,7 @@ export const Settings = {
   remove: (key: string): Promise<void> =>
     pfDb.settings.delete(key),
 }
+
+export async function clearAll(): Promise<void> {
+  await pfDb.settings.clear()
+}

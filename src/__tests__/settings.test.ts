@@ -58,3 +58,22 @@ describe('Settings', () => {
     await expect(Settings.remove('nonexistent')).resolves.toBeUndefined()
   })
 })
+
+describe('clearAll', () => {
+  it('removes all settings', async () => {
+    const { Settings } = await import('../settings')
+    const { clearAll } = await import('../settings')
+    await Settings.set('a', 1)
+    await Settings.set('b', 2)
+    await Settings.set('c', 3)
+    await clearAll()
+    expect(await Settings.get('a')).toBeUndefined()
+    expect(await Settings.get('b')).toBeUndefined()
+    expect(await Settings.get('c')).toBeUndefined()
+  })
+
+  it('is safe to call on empty store', async () => {
+    const { clearAll } = await import('../settings')
+    await expect(clearAll()).resolves.toBeUndefined()
+  })
+})
